@@ -60,24 +60,24 @@ public class MyJFrame extends JFrame implements KeyListener, ActionListener {
     
     
     
-    //创建初始化图片方法
+    //初始化图块方法
     public void initImage(){
         this.getContentPane().removeAll();
         JLabel label_step = new JLabel("步数" + step);
         label_step.setBounds(50, 20,100,20);
         this.add(label_step);
         if (victory()){
-            ImageIcon imageIcon = new ImageIcon("image\\win.png");
+            ImageIcon imageIcon = new ImageIcon("image\\win.jpeg");
             JLabel jLabel = new JLabel(imageIcon);
             jLabel.setBounds(514/2 - 266/2,230,266,88);
             this.add(jLabel);
         }
-        for (int i = 0; i < datas.length; i++){
-            for (int j = 0; j < datas[i].length; j++) {
+        for (int i = 0; i < 4; i++){
+            for (int j = 0; j < 4; j++) {
                 int data = datas[i][j];
                 if (data != 0){
                 	ImageIcon imageIcon = new ImageIcon("D:\\学习\\开源实践\\练习项目\\29-WangXF-YuanZT\\image\\image\\img" + data + ".jpeg");
-                	//ImageIcon imageIcon = new ImageIcon("C:\\Users\\袁\\Desktop\\31369f5b2f4b66ed605621e29c9dc3d.png");
+                	
                     //创建了一个JLabel对象
                     JLabel jLabel = new JLabel(imageIcon); 
                     //设置jLabel的宽高坐标
@@ -87,7 +87,7 @@ public class MyJFrame extends JFrame implements KeyListener, ActionListener {
             }
         }
         //添加背景图片
-        ImageIcon  background = new ImageIcon("C:\\Users\\袁\\Desktop\\941a44b36c0a99b365cd75e197b9bce.jpg");
+        ImageIcon  background = new ImageIcon("image\\bg.jpeg");
         JLabel backgroundJLabel = new JLabel(background);
         backgroundJLabel.setBounds(26, 30, 450,484);
         this.add(backgroundJLabel);
@@ -112,22 +112,18 @@ public class MyJFrame extends JFrame implements KeyListener, ActionListener {
     
     //初始化随机二维数组
     public void initData(){
-        int[] temp = new int[25];
-        for (int i = 0; i < 25; i++) {
-            temp[i] = i;
-        }
-
+        int[] temp = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, };
         for (int i = 0; i < temp.length; i++) {
             Random r = new Random();
-            //因为temp的长度为25，而.nextInt（temp.length）方法的意思是生成范围为[0,25)的随机数
+            //temp的长度为25，而.nextInt（temp.length）方法的意思是生成范围为[0,25)的随机数
             int index = r.nextInt(temp.length);
-            //当我们获得索引的随机数后，我们需要将索引所在元素和当前循环的元素换位置
+            //将索引所在元素和当前循环的元素换位置
             int number = temp[i];
             temp[i] = temp[index];
             temp[index] = number;
         }
         for (int i = 0; i < temp.length; i++) {
-            //将已经打乱了后的数组存放于二维数组中保存
+            //将打乱后的数组保存
             datas[i /5][i % 5] = temp[i];
             if (temp[i] == 0){
                 x0 = i / 5;
@@ -199,7 +195,7 @@ public class MyJFrame extends JFrame implements KeyListener, ActionListener {
         }
         //强制归位   w键
         else if (keyCode == 87){
-            datas = new int[][]{{1, 2, 3 ,4 ,5},{6, 7, 8 ,9 ,10},{11, 12, 13 ,14 ,15},{16, 17, 18 ,19 ,20} , {21, 22, 23 ,24 ,0},};
+            datas = victory;
         }
         //重新打乱   Q键
         else if(keyCode == 81) {
