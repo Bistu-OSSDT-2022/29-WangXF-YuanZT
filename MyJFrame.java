@@ -76,7 +76,7 @@ public class MyJFrame extends JFrame implements KeyListener, ActionListener {
             for (int j = 0; j < 4; j++) {
                 int data = datas[i][j];
                 if (data != 0){
-                	ImageIcon imageIcon = new ImageIcon("D:\\学习\\开源实践\\练习项目\\29-WangXF-YuanZT\\image\\image\\img" + data + ".jpeg");
+                	ImageIcon imageIcon = new ImageIcon("image\\img" + data + ".jpeg");
                 	
                     //创建了一个JLabel对象
                     JLabel jLabel = new JLabel(imageIcon); 
@@ -96,7 +96,7 @@ public class MyJFrame extends JFrame implements KeyListener, ActionListener {
     }
     
     
-    //此方法用于判断游戏是否完成
+    //判断游戏是否完成
     public boolean victory() {
         //判断数组是否相等datas和victory
         for (int i = 0; i < datas.length; i++) {
@@ -115,9 +115,9 @@ public class MyJFrame extends JFrame implements KeyListener, ActionListener {
         int[] temp = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, };
         for (int i = 0; i < temp.length; i++) {
             Random r = new Random();
-            //temp的长度为25，而.nextInt（temp.length）方法的意思是生成范围为[0,25)的随机数
+            //temp的长度为25，.nextInt（temp.length）的意思是生成范围为[0,25)的随机数
             int index = r.nextInt(temp.length);
-            //将索引所在元素和当前循环的元素换位置
+            //替换元素位置
             int number = temp[i];
             temp[i] = temp[index];
             temp[index] = number;
